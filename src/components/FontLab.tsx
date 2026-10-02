@@ -136,9 +136,45 @@ export const FontLab: React.FC<FontLabProps> = ({ onGoToQuizzes }) => {
         <h2 className="text-3xl md:text-4xl font-extrabold text-slate-800">
           Troba la font perfecta segons la personalitat
         </h2>
-        <p className="text-slate-600 text-sm md:text-base max-w-xl mx-auto font-medium">
-          Escriu el nom de la teva marca, tria 3 adjectius que la defineixin i l'algoritme Artífex calcularà la font ideal.
+        <p className="text-slate-600 text-sm md:text-base max-w-2xl mx-auto font-medium">
+          Escriu el nom de la teva marca, tria 3 adjectius que la defineixin i l'algoritme Artífex calcularà la font ideal segons els principis de disseny.
         </p>
+      </div>
+
+      {/* EDUCATIONAL GUIDE BEFORE SIMULATOR */}
+      <div className="glass-panel p-6 rounded-3xl border border-slate-200 bg-white shadow-sm space-y-4">
+        <div className="flex items-center gap-3 border-b border-slate-100 pb-3">
+          <div className="p-2.5 bg-purple-50 text-purple-600 rounded-xl border border-purple-100">
+            <Info className="w-5 h-5" />
+          </div>
+          <div>
+            <h3 className="text-base font-extrabold text-slate-900">Com funciona l'Anàlisi d'ADN Tipogràfic?</h3>
+            <p className="text-xs text-slate-500 font-medium">Instruccions pas a pas abans de començar el simulador</p>
+          </div>
+        </div>
+
+        <div className="grid sm:grid-cols-3 gap-4 text-xs">
+          <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 space-y-1">
+            <span className="font-extrabold text-purple-900 block">1. Pensa en la Identitat</span>
+            <p className="text-slate-600 font-medium leading-relaxed">
+              Quins valors vols transmetre als teus clients? Què ha de sentir algú en veure el teu projecte per primer cop?
+            </p>
+          </div>
+
+          <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 space-y-1">
+            <span className="font-extrabold text-purple-900 block">2. Tria 3 Adjectius Clau</span>
+            <p className="text-slate-600 font-medium leading-relaxed">
+              Selecciona exactament 3 adjectius de la llista (ex. *Elegant*, *Tradicional*, *Luxosa* o *Moderna*, *Neta*, *Tecnològica*).
+            </p>
+          </div>
+
+          <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 space-y-1">
+            <span className="font-extrabold text-purple-900 block">3. Analitza el Resultat</span>
+            <p className="text-slate-600 font-medium leading-relaxed">
+              L'algoritme Artífex calcularà la família tipogràfica que millor equilibra els adjectius triats i et mostrarà la previsualització.
+            </p>
+          </div>
+        </div>
       </div>
 
       {step === 1 && (

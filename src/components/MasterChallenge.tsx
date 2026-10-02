@@ -112,9 +112,52 @@ export const MasterChallenge: React.FC<MasterChallengeProps> = ({
         <h2 className="text-3xl md:text-5xl font-extrabold text-slate-800 tracking-tight">
           Crea la identitat perfecta per a 4 encàrrecs reals
         </h2>
-        <p className="text-slate-600 text-base md:text-lg max-w-2xl mx-auto font-medium">
+        <p className="text-slate-600 text-base md:text-lg max-w-3xl mx-auto font-medium">
           Selecciona **La Veu** (Tipografia) i **L'Emoció** (Paleta de Colors). L'aplicació avaluarà localment la teva feina i et mostrarà la millor opció recomanada.
         </p>
+      </div>
+
+      {/* EDUCATIONAL WORKFLOW GUIDE BEFORE CHALLENGE */}
+      <div className="glass-panel p-6 rounded-3xl border border-slate-200 bg-white shadow-sm space-y-4">
+        <div className="flex items-center gap-3 border-b border-slate-100 pb-3">
+          <div className="p-2.5 bg-amber-50 text-amber-600 rounded-xl border border-amber-100">
+            <HelpCircle className="w-5 h-5" />
+          </div>
+          <div>
+            <h3 className="text-base font-extrabold text-slate-900">Metodologia de Disseny Professional en 4 Passos</h3>
+            <p className="text-xs text-slate-500 font-medium">Com resoldre cada encàrrec del Repte Final</p>
+          </div>
+        </div>
+
+        <div className="grid sm:grid-cols-4 gap-3 text-xs">
+          <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 space-y-1">
+            <span className="font-extrabold text-amber-900 block">Passos 1. Analitzar el Brief</span>
+            <p className="text-slate-600 font-medium leading-relaxed">
+              Llegeix el client, el seu sector, el públic objectiu i sobretot els **valors clau de marca**.
+            </p>
+          </div>
+
+          <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 space-y-1">
+            <span className="font-extrabold text-amber-900 block">Passos 2. Triar la Tipografia</span>
+            <p className="text-slate-600 font-medium leading-relaxed">
+              Selecciona quina família (Serifa, Pal Sec, Script o Display) transmet la **veu** adequada.
+            </p>
+          </div>
+
+          <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 space-y-1">
+            <span className="font-extrabold text-amber-900 block">Passos 3. Triar la Paleta</span>
+            <p className="text-slate-600 font-medium leading-relaxed">
+              Escull la paleta que transmeti l'**emoció** del sector sense cometre errors d'estil o de contrast WCAG.
+            </p>
+          </div>
+
+          <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 space-y-1">
+            <span className="font-extrabold text-amber-900 block">Passos 4. Rebre el Diagnòstic</span>
+            <p className="text-slate-600 font-medium leading-relaxed">
+              Prem 'Avaluar' per veure la puntuació, la retroacció i la **Millor Opció Recomanada**.
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Progress & Brief Navigation Tabs */}
@@ -397,28 +440,42 @@ export const MasterChallenge: React.FC<MasterChallengeProps> = ({
               </div>
 
               {/* OPTIMAL RECOMMENDATION DISPLAY BOX */}
-              <div className="p-5 rounded-2xl bg-amber-50/90 border border-amber-300 space-y-3">
-                <div className="flex items-center gap-2 text-amber-900 font-extrabold text-sm">
-                  <Sparkles className="w-4 h-4 text-amber-600" />
-                  <span>La Millor Opció Recomanada</span>
-                </div>
+              {(() => {
+                const optimalPal = brief.suggestedPalettes.find(p => p.type === 'OPTIMAL') || brief.suggestedPalettes[0];
+                const optRec = currentEval.optimalRecommendation || {
+                  fontCategory: brief.expectedCategory,
+                  fontCategoryName: brief.expectedCategoryName,
+                  paletteName: optimalPal.name,
+                  bg: optimalPal.bg,
+                  fg: optimalPal.fg,
+                  explanation: `Per a ${brief.clientName} (${brief.industry}), la selecció perfecta és la font ${brief.expectedCategoryName} combinada amb la paleta "${optimalPal.name}". ${optimalPal.feedback}`
+                };
 
-                <div className="flex flex-wrap items-center gap-3 bg-white p-3 rounded-xl border border-amber-200">
-                  <span className="px-3 py-1 rounded-lg bg-indigo-100 text-indigo-900 font-bold text-xs">
-                    {currentEval.optimalRecommendation.fontCategoryName}
-                  </span>
+                return (
+                  <div className="p-5 rounded-2xl bg-amber-50/90 border border-amber-300 space-y-3">
+                    <div className="flex items-center gap-2 text-amber-900 font-extrabold text-sm">
+                      <Sparkles className="w-4 h-4 text-amber-600" />
+                      <span>La Millor Opció Recomanada</span>
+                    </div>
 
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded-full border border-slate-300" style={{ backgroundColor: currentEval.optimalRecommendation.bg }} />
-                    <div className="w-4 h-4 rounded-full border border-slate-300" style={{ backgroundColor: currentEval.optimalRecommendation.fg }} />
-                    <span className="font-extrabold text-xs text-slate-800">{currentEval.optimalRecommendation.paletteName}</span>
+                    <div className="flex flex-wrap items-center gap-3 bg-white p-3 rounded-xl border border-amber-200">
+                      <span className="px-3 py-1 rounded-lg bg-indigo-100 text-indigo-900 font-bold text-xs">
+                        {optRec.fontCategoryName}
+                      </span>
+
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 rounded-full border border-slate-300" style={{ backgroundColor: optRec.bg }} />
+                        <div className="w-4 h-4 rounded-full border border-slate-300" style={{ backgroundColor: optRec.fg }} />
+                        <span className="font-extrabold text-xs text-slate-800">{optRec.paletteName}</span>
+                      </div>
+                    </div>
+
+                    <p className="text-xs text-amber-950 leading-relaxed font-medium">
+                      {optRec.explanation}
+                    </p>
                   </div>
-                </div>
-
-                <p className="text-xs text-amber-950 leading-relaxed font-medium">
-                  {currentEval.optimalRecommendation.explanation}
-                </p>
-              </div>
+                );
+              })()}
 
               {/* Next Brief Button */}
               {currentBriefIdx < MASTER_BRIEFS.length - 1 && (

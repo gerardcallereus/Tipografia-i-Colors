@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { Sun, HeartHandshake, Eye, Check, X, ArrowRight, ShieldCheck, Palette } from 'lucide-react';
+import { Sun, HeartHandshake, Eye, Check, X, ArrowRight, ShieldCheck, Palette, BookOpen, Sparkles, Layers, Sliders } from 'lucide-react';
 
 interface TheoryColorsProps {
   onGoToTools: () => void;
 }
 
 export const TheoryColors: React.FC<TheoryColorsProps> = ({ onGoToTools }) => {
-  const [activeTab, setActiveTab] = useState<'contrast' | 'accessibility' | 'psychology'>('contrast');
+  const [activeTab, setActiveTab] = useState<'contrast' | 'accessibility' | 'psychology' | 'harmonies'>('contrast');
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8 animate-fade-in space-y-8">
+    <div className="max-w-6xl mx-auto px-4 py-8 animate-fade-in space-y-10">
       
       {/* Title Header */}
       <div className="text-center space-y-3">
@@ -20,20 +20,65 @@ export const TheoryColors: React.FC<TheoryColorsProps> = ({ onGoToTools }) => {
         <h2 className="text-3xl md:text-5xl font-extrabold text-slate-800 tracking-tight">
           El color no és només estètica: és emoció i llegibilitat
         </h2>
-        <p className="text-slate-600 text-base md:text-lg max-w-2xl mx-auto font-medium">
-          Comprendre el contrast WCAG i la psicologia del color ens permet crear interfícies boniques, emocionants i accessibles per a tothom.
+        <p className="text-slate-600 text-base md:text-lg max-w-3xl mx-auto font-medium">
+          Comprendre el contrast WCAG, la codificació hexadecimal HEX i la psicologia del color ens permet crear interfícies boniques, emocionants i accessibles per a tothom.
         </p>
       </div>
 
+      {/* THEORETICAL FOUNDATION CARD */}
+      <div className="glass-panel p-6 md:p-8 rounded-3xl border border-slate-200 bg-white shadow-sm space-y-6">
+        <div className="flex items-center gap-3 border-b border-slate-100 pb-4">
+          <div className="p-3 bg-pink-50 text-pink-600 rounded-2xl border border-pink-100">
+            <BookOpen className="w-6 h-6" />
+          </div>
+          <div>
+            <h3 className="text-xl font-extrabold text-slate-900">Fonaments Pedagògics de la Teoria del Color Digital</h3>
+            <p className="text-xs text-slate-500 font-medium">Com funciona el color en pantalles i com influeix en la percepció humana</p>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200/80 space-y-2">
+            <div className="flex items-center gap-2 text-pink-950 font-bold text-sm">
+              <Sliders className="w-4 h-4 text-pink-600" />
+              <span>1. El Codi Hexadecimal (HEX)</span>
+            </div>
+            <p className="text-xs text-slate-700 leading-relaxed font-medium">
+              Les pantalles utilitzen el sistema **RGB** expressat en codi `#RRGGBB` (00 a FF). `#FF0000` és Vermell pur, `#00FF00` Verd i `#0000FF` Blau. `#FFFFFF` és Blanc i `#000000` Negre.
+            </p>
+          </div>
+
+          <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200/80 space-y-2">
+            <div className="flex items-center gap-2 text-pink-950 font-bold text-sm">
+              <Layers className="w-4 h-4 text-pink-600" />
+              <span>2. Lluminositat i Contrast</span>
+            </div>
+            <p className="text-xs text-slate-700 leading-relaxed font-medium">
+              No tots els colors reflecteixen la mateixa quantitat de llum. El groc té una lluminositat del 90% (quasi blanc), mentre que el blau fosc té un 10%. Combinar lluminositats similars destrueix la llegibilitat.
+            </p>
+          </div>
+
+          <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200/80 space-y-2">
+            <div className="flex items-center gap-2 text-pink-950 font-bold text-sm">
+              <Sparkles className="w-4 h-4 text-pink-600" />
+              <span>3. L'Emoció Inconscient</span>
+            </div>
+            <p className="text-xs text-slate-700 leading-relaxed font-medium">
+              El nostre cervell processa la gamma cromàtica en menys de 90 mil·lisecons. Els colors càlids (vermell, taronja, groc) acceleren el ritme cardíac; els freds (blau, verd) transmeten calma i serietat.
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Internal Navigation Tabs */}
-      <div className="flex justify-center gap-2 max-w-md mx-auto bg-slate-100 p-1.5 rounded-2xl border border-slate-200">
+      <div className="flex justify-center gap-2 max-w-xl mx-auto bg-slate-100 p-1.5 rounded-2xl border border-slate-200">
         <button
           onClick={() => setActiveTab('contrast')}
           className={`flex-1 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all ${
             activeTab === 'contrast' ? 'bg-indigo-600 text-white shadow-md' : 'text-slate-600 hover:text-slate-900'
           }`}
         >
-          1. El Contrast WCAG
+          1. Contrast WCAG
         </button>
         <button
           onClick={() => setActiveTab('accessibility')}
@@ -50,6 +95,14 @@ export const TheoryColors: React.FC<TheoryColorsProps> = ({ onGoToTools }) => {
           }`}
         >
           3. Psicologia del Color
+        </button>
+        <button
+          onClick={() => setActiveTab('harmonies')}
+          className={`flex-1 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all ${
+            activeTab === 'harmonies' ? 'bg-indigo-600 text-white shadow-md' : 'text-slate-600 hover:text-slate-900'
+          }`}
+        >
+          4. Harmonies
         </button>
       </div>
 
@@ -107,22 +160,22 @@ export const TheoryColors: React.FC<TheoryColorsProps> = ({ onGoToTools }) => {
               
               <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200">
                 <div className="bg-slate-800 text-slate-400 py-3 rounded-lg font-bold text-sm mb-2">Fosc / Fosc</div>
-                <span className="text-red-600 text-xs font-bold flex items-center justify-center gap-1"><X className="w-3.5 h-3.5" /> Error</span>
+                <span className="text-red-600 text-xs font-bold flex items-center justify-center gap-1"><X className="w-3.5 h-3.5" /> Error (FAIL)</span>
               </div>
 
               <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200">
                 <div className="bg-slate-800 text-white py-3 rounded-lg font-bold text-sm mb-2">Clar / Fosc</div>
-                <span className="text-emerald-600 text-xs font-bold flex items-center justify-center gap-1"><Check className="w-3.5 h-3.5" /> Genial</span>
+                <span className="text-emerald-600 text-xs font-bold flex items-center justify-center gap-1"><Check className="w-3.5 h-3.5" /> Genial (AAA)</span>
               </div>
 
               <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200">
                 <div className="bg-white text-yellow-500 py-3 rounded-lg font-bold text-sm mb-2 border border-slate-200">Clar / Clar</div>
-                <span className="text-red-600 text-xs font-bold flex items-center justify-center gap-1"><X className="w-3.5 h-3.5" /> Error</span>
+                <span className="text-red-600 text-xs font-bold flex items-center justify-center gap-1"><X className="w-3.5 h-3.5" /> Error (FAIL)</span>
               </div>
 
               <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200">
                 <div className="bg-white text-slate-900 py-3 rounded-lg font-bold text-sm mb-2 border border-slate-200">Fosc / Clar</div>
-                <span className="text-emerald-600 text-xs font-bold flex items-center justify-center gap-1"><Check className="w-3.5 h-3.5" /> Genial</span>
+                <span className="text-emerald-600 text-xs font-bold flex items-center justify-center gap-1"><Check className="w-3.5 h-3.5" /> Genial (AAA)</span>
               </div>
 
             </div>
@@ -170,7 +223,7 @@ export const TheoryColors: React.FC<TheoryColorsProps> = ({ onGoToTools }) => {
         <div className="glass-panel p-6 sm:p-10 rounded-3xl space-y-6 animate-fade-in border border-slate-200 bg-white">
           <h3 className="text-2xl font-extrabold text-slate-900 flex items-center gap-3">
             <Palette className="w-7 h-7 text-purple-600" />
-            Psicologia Emocional del Color
+            Psicologia Emocional del Color i Exemples Reals
           </h3>
 
           <p className="text-slate-700 text-base font-medium">
@@ -179,42 +232,92 @@ export const TheoryColors: React.FC<TheoryColorsProps> = ({ onGoToTools }) => {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             
-            <div className="bg-sky-50 p-4 rounded-2xl border border-sky-200">
+            <div className="bg-sky-50 p-5 rounded-2xl border border-sky-200 space-y-1">
               <div className="w-4 h-4 rounded-full bg-sky-500 mb-2"></div>
               <h4 className="font-bold text-sky-900">Blau / Cian</h4>
-              <p className="text-xs text-slate-700 mt-1">Confiança, seguretat, tecnologia, seriositat, tranquil·litat corporativa.</p>
+              <p className="text-xs text-slate-700">Confiança, seguretat, tecnologia, seriositat, tranquil·litat corporativa.</p>
+              <span className="text-[11px] font-bold text-sky-700 block pt-1">Exemples: IBM, Facebook, Intel, Samsung.</span>
             </div>
 
-            <div className="bg-rose-50 p-4 rounded-2xl border border-rose-200">
+            <div className="bg-rose-50 p-5 rounded-2xl border border-rose-200 space-y-1">
               <div className="w-4 h-4 rounded-full bg-rose-500 mb-2"></div>
               <h4 className="font-bold text-rose-900">Vermell</h4>
-              <p className="text-xs text-slate-700 mt-1">Energia, passió, urgència, perill, força i altes pulsacions.</p>
+              <p className="text-xs text-slate-700">Energia, passió, urgència, perill, força i altes pulsacions.</p>
+              <span className="text-[11px] font-bold text-rose-700 block pt-1">Exemples: Coca-Cola, Netflix, YouTube, Ferrari.</span>
             </div>
 
-            <div className="bg-emerald-50 p-4 rounded-2xl border border-emerald-200">
+            <div className="bg-emerald-50 p-5 rounded-2xl border border-emerald-200 space-y-1">
               <div className="w-4 h-4 rounded-full bg-emerald-500 mb-2"></div>
               <h4 className="font-bold text-emerald-900">Verd</h4>
-              <p className="text-xs text-slate-700 mt-1">Natura, salut, sostenibilitat, creixement, frescor i renovació.</p>
+              <p className="text-xs text-slate-700">Natura, salut, sostenibilitat, creixement, frescor i renovació.</p>
+              <span className="text-[11px] font-bold text-emerald-700 block pt-1">Exemples: Spotify, Starbucks, Whole Foods, Android.</span>
             </div>
 
-            <div className="bg-amber-50 p-4 rounded-2xl border border-amber-200">
+            <div className="bg-amber-50 p-5 rounded-2xl border border-amber-200 space-y-1">
               <div className="w-4 h-4 rounded-full bg-amber-400 mb-2"></div>
               <h4 className="font-bold text-amber-900">Groc / Taronja</h4>
-              <p className="text-xs text-slate-700 mt-1">Optimisme, calidesa, atenció, joventut, energia solar i creativitat.</p>
+              <p className="text-xs text-slate-700">Optimisme, calidesa, atenció, joventut, energia solar i creativitat.</p>
+              <span className="text-[11px] font-bold text-amber-800 block pt-1">Exemples: McDonald's, IKEA, Nickelodeon, Fanta.</span>
             </div>
 
-            <div className="bg-purple-50 p-4 rounded-2xl border border-purple-200">
+            <div className="bg-purple-50 p-5 rounded-2xl border border-purple-200 space-y-1">
               <div className="w-4 h-4 rounded-full bg-purple-500 mb-2"></div>
               <h4 className="font-bold text-purple-900">Púrpura / Lila</h4>
-              <p className="text-xs text-slate-700 mt-1">Luxe, exclusivitat, màgia, imaginació, espiritualitat i misteri.</p>
+              <p className="text-xs text-slate-700">Luxe, exclusivitat, màgia, imaginació, espiritualitat i misteri.</p>
+              <span className="text-[11px] font-bold text-purple-700 block pt-1">Exemples: Twitch, Milka, Cadbury, Hallway.</span>
             </div>
 
-            <div className="bg-slate-100 p-4 rounded-2xl border border-slate-200">
+            <div className="bg-slate-100 p-5 rounded-2xl border border-slate-200 space-y-1">
               <div className="w-4 h-4 rounded-full bg-slate-900 mb-2"></div>
               <h4 className="font-bold text-slate-900">Negre &amp; Blanc</h4>
-              <p className="text-xs text-slate-700 mt-1">Minimalisme, claredat pura, elegància intemporal, contrast suprem.</p>
+              <p className="text-xs text-slate-700">Minimalisme, claredat pura, elegància intemporal, contrast suprem.</p>
+              <span className="text-[11px] font-bold text-slate-800 block pt-1">Exemples: Apple, Nike, Chanel, Uber.</span>
             </div>
 
+          </div>
+        </div>
+      )}
+
+      {/* Section 4: Harmonies */}
+      {activeTab === 'harmonies' && (
+        <div className="glass-panel p-6 sm:p-10 rounded-3xl space-y-6 animate-fade-in border border-slate-200 bg-white">
+          <h3 className="text-2xl font-extrabold text-slate-900 flex items-center gap-3">
+            <Sparkles className="w-7 h-7 text-indigo-600" />
+            Harmonies Cromàtiques en Disseny Visual
+          </h3>
+
+          <p className="text-slate-700 text-base font-medium">
+            Com es combinen els colors de manera professional? Existeixen 4 regles d'harmonia basades en el cercle cromàtic:
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-1">
+              <h4 className="font-extrabold text-indigo-900 text-sm">1. Monocromàtica</h4>
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                Utilitza un sol to variant només la lluminositat i la saturació (ex. blau fosc, blau mitjà, blau clar). Aporta elegància i ordre.
+              </p>
+            </div>
+
+            <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-1">
+              <h4 className="font-extrabold text-indigo-900 text-sm">2. Complementària</h4>
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                Combina dos colors oposats al cercle cromàtic (ex. blau i taronja, lila i groc). Genera un contrast altíssim i crida molt l'atenció.
+              </p>
+            </div>
+
+            <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-1">
+              <h4 className="font-extrabold text-indigo-900 text-sm">3. Anàloga</h4>
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                Combina colors veïns al cercle cromàtic (ex. vermell, taronja i groc). Aporta harmonia natural i confort visual.
+              </p>
+            </div>
+
+            <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-1">
+              <h4 className="font-extrabold text-indigo-900 text-sm">4. Triàdica</h4>
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                Utilitza tres colors equidistants formant un triangle (ex. vermell, blau i groc). Molt vibrant i utilitzada en projectes juvenils i dinàmics.
+              </p>
+            </div>
           </div>
         </div>
       )}
@@ -225,7 +328,7 @@ export const TheoryColors: React.FC<TheoryColorsProps> = ({ onGoToTools }) => {
           onClick={onGoToTools}
           className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3.5 rounded-xl font-bold text-sm shadow-md transition-all hover:scale-105"
         >
-          <span>Anar a les Eines Interactives</span>
+          <span>Anar a les Eines Interactives (Calculadora WCAG)</span>
           <ArrowRight className="w-4 h-4" />
         </button>
       </div>
@@ -233,3 +336,4 @@ export const TheoryColors: React.FC<TheoryColorsProps> = ({ onGoToTools }) => {
     </div>
   );
 };
+

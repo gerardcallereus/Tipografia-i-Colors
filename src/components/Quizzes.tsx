@@ -333,6 +333,38 @@ export const Quizzes: React.FC<QuizzesProps> = ({
         <h2 className="text-3xl md:text-4xl font-extrabold text-slate-800">
           Posa a prova els teus coneixements
         </h2>
+        <p className="text-slate-600 text-sm md:text-base max-w-2xl mx-auto font-medium">
+          Avalua la teva comprensió de la Veu Tipogràfica (12 preguntes) i del Contrast WCAG 2.1 (12 preguntes) abans d'afrontar el Repte Final.
+        </p>
+      </div>
+
+      {/* EDUCATIONAL GUIDE BEFORE QUIZZES */}
+      <div className="glass-panel p-6 rounded-3xl border border-slate-200 bg-white shadow-sm space-y-4">
+        <div className="flex items-center gap-3 border-b border-slate-100 pb-3">
+          <div className="p-2.5 bg-amber-50 text-amber-600 rounded-xl border border-amber-100">
+            <Lightbulb className="w-5 h-5" />
+          </div>
+          <div>
+            <h3 className="text-base font-extrabold text-slate-900">Consells Clau abans de Respondre</h3>
+            <p className="text-xs text-slate-500 font-medium">Criteris de decisió pedagògica per encertar les preguntes</p>
+          </div>
+        </div>
+
+        <div className="grid sm:grid-cols-2 gap-4 text-xs">
+          <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 space-y-1">
+            <span className="font-extrabold text-amber-900 block">Al Repte Tipogràfic:</span>
+            <p className="text-slate-600 font-medium leading-relaxed">
+              Analitza els **valors de marca** de cada escenari. *Serifa* = Luxe/Tradició; *Pal Sec* = Tecnologia/Minimalisme; *Script* = Artesania/Amor; *Display* = Rebeldia/Impacte.
+            </p>
+          </div>
+
+          <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 space-y-1">
+            <span className="font-extrabold text-amber-900 block">Al Repte de Contrast:</span>
+            <p className="text-slate-600 font-medium leading-relaxed">
+              Fixa't si la combinació permet llegir el text sense esforç visual. Rebutja combinacions de lluminositat similar (ex. gris sobre blanc, blau fosc sobre negre o vermell sobre verd).
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Quiz Selector Tabs */}
